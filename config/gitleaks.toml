@@ -23,7 +23,7 @@ regexes = [
     '''^\${([A-Z_]+|[a-z_]+)}$''',
 ]
 paths = [
-    '''^gitleaks\.toml$''',
+    '''gitleaks\.toml''',
     '''(?i)\.(bmp|gif|jpe?g|svg|tiff?)$''',
     '''(.*?)(doc|docx|zip|xls|pdf|bin|socket|vsidx|v2|suo|wsuo|.dll|pdb|exe|gltf)$''',
     '''go\.(mod|sum|work(\.sum)?)$''',
@@ -142,6 +142,13 @@ keywords = [
     "abia",
     "acca",
 ]
+
+[[rules]]
+id = "azure-ad-client-secret"
+description = "Azure AD Client Secret"
+regex = '''(?:^|[\\'"\x60\s>=:(,)])([a-zA-Z0-9_~.]{3}\dQ~[a-zA-Z0-9_~.-]{31,34})(?:$|[\\'"\x60\s<),])'''
+entropy = 3
+keywords = ["q~"]
 
 [[rules]]
 id = "beamer-api-token"
